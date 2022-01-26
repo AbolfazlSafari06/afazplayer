@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import data from "../src/data";
+import Player from "./component/Player";
+import Song from "./component/Song";
+import SongsList from "./component/SongsList";
+import ToggleList from "./component/ToggleList";
+import { Song as SongModel } from "./models/Song";
+import "./styles/app.scss";
 
 function App() {
+  const [songs, setSongs] = useState<SongModel[]>(data());
+  const [currentSong, setCurrentSong] = useState<SongModel>(songs[0]);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [displayListSong, setDisplayListSong] = useState<boolean>(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${displayListSong ? "active-list" : ""}`}>
+      <ToggleList
+        displayListSong={displayListSong}
+        setDisplayListSong={setDisplayListSong}
+      />
+      <Song currentSong={currentSong} />
+      <Player
+        Songs={songs}
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        setCurrentSong={setCurrentSong}
+      />
+      <SongsList
+        displayListSong={displayListSong}
+        currentSong={currentSong}
+        SongsList={songs}
+        setCurrentSong={setCurrentSong}
+      />
     </div>
   );
 }

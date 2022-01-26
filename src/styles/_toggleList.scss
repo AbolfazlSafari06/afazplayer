@@ -1,0 +1,42 @@
+nav {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button {
+    background: transparent;
+    border: 2px solid rgb(65, 65, 65);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 500;
+    transition: all 0.3s ease;
+    &:hover {
+      background: rgb(65, 65, 65);
+      color: white;
+    }
+  }
+}
+#app-title {
+  margin-right: 5px;
+  font-weight: bold;
+}
+#button-toggle {
+  margin-right: 5px;
+  font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+  nav {
+    button {
+      z-index: 10;
+      position: fixed;
+      top: 1vh;
+      right: 2vw;
+    }
+  }
+  #app-title {
+    position: fixed;
+    top: 1vh;
+    left: 2vw;
+  }
+}

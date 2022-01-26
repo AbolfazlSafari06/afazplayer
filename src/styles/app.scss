@@ -1,0 +1,19 @@
+@import "./song";
+@import "./mixins";
+@import "./player";
+@import "./songList";
+@import "./toggleList";
+@import "../index.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.app {
+  height: 100vh;
+  transition: 1s all ease;
+}
+.active-list {
+  margin-left: 15%;
+}
